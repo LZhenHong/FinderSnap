@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F232FEE92EDD9087003089FF /* SettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F232FEE82EDD9087003089FF /* SettingsKit */; };
+		F2B0BCFE2EE6F8800098BC48 /* AppUpdater in Frameworks */ = {isa = PBXBuildFile; productRef = F2B0BCFD2EE6F8800098BC48 /* AppUpdater */; };
 		F2EFDD442BEBCEAF001A9B6D /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = F2EFDD432BEBCEAF001A9B6D /* Storage */; };
 /* End PBXBuildFile section */
 
@@ -26,6 +27,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F232FEE92EDD9087003089FF /* SettingsKit in Frameworks */,
+				F2B0BCFE2EE6F8800098BC48 /* AppUpdater in Frameworks */,
 				F2EFDD442BEBCEAF001A9B6D /* Storage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +74,7 @@
 			packageProductDependencies = (
 				F2EFDD432BEBCEAF001A9B6D /* Storage */,
 				F232FEE82EDD9087003089FF /* SettingsKit */,
+				F2B0BCFD2EE6F8800098BC48 /* AppUpdater */,
 			);
 			productName = FinderEnhancer;
 			productReference = F215A82F2BE7D7E4008AB0C4 /* FinderSnap.app */;
@@ -106,6 +109,7 @@
 			packageReferences = (
 				F2EFDD422BEBCEAF001A9B6D /* XCRemoteSwiftPackageReference "StorageMacro" */,
 				F232FEE72EDD9087003089FF /* XCRemoteSwiftPackageReference "SettingsKit" */,
+				F2B0BCFC2EE6F8800098BC48 /* XCRemoteSwiftPackageReference "AppUpdater" */,
 			);
 			productRefGroup = F215A8302BE7D7E4008AB0C4 /* Products */;
 			projectDirPath = "";
@@ -288,7 +292,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzhlovesjyq.FinderSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -321,7 +325,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 14.0;
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lzhlovesjyq.FinderSnap;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -361,6 +365,14 @@
 				minimumVersion = 0.0.1;
 			};
 		};
+		F2B0BCFC2EE6F8800098BC48 /* XCRemoteSwiftPackageReference "AppUpdater" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/s1ntoneli/AppUpdater.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.2.0;
+			};
+		};
 		F2EFDD422BEBCEAF001A9B6D /* XCRemoteSwiftPackageReference "StorageMacro" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/LZhenHong/StorageMacro";
@@ -376,6 +388,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F232FEE72EDD9087003089FF /* XCRemoteSwiftPackageReference "SettingsKit" */;
 			productName = SettingsKit;
+		};
+		F2B0BCFD2EE6F8800098BC48 /* AppUpdater */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2B0BCFC2EE6F8800098BC48 /* XCRemoteSwiftPackageReference "AppUpdater" */;
+			productName = AppUpdater;
 		};
 		F2EFDD432BEBCEAF001A9B6D /* Storage */ = {
 			isa = XCSwiftPackageProductDependency;
