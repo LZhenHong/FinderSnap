@@ -118,8 +118,10 @@ struct AboutSettingView: View {
       Text("Version: \(displayVersion)")
         .font(.subheadline)
         .foregroundStyle(.secondary)
-      updateCheckView
-        .padding(.top, 8)
+      #if !DISABLE_UPDATE_CHECK
+        updateCheckView
+          .padding(.top, 8)
+      #endif
     }
     .padding(.top, 10)
     .padding(.bottom, 20)
