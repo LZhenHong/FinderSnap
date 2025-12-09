@@ -93,3 +93,9 @@ iOSInjectionProject/
 # Mac
 .DS_Store
 
+# Environment
+.env
+
+# Release artifacts
+releases/
+
