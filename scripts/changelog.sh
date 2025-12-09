@@ -43,10 +43,22 @@ generate_english() {
 
     call_api "Write release notes for FinderSnap (macOS menu bar app that auto-resizes Finder windows).
 
-For END USERS only:
-- Only user-visible features, max 5-6 items
-- Skip technical changes (refactoring, dependencies)
-- Simple language, focus on benefits
+Target: Non-technical end users who only care about what the app DOES, not HOW it works.
+
+INCLUDE (user-visible):
+- New features users can see or interact with
+- New settings/preferences in the UI
+- Changes to app name, icon, or appearance
+- Keyboard shortcuts
+- Bug fixes that users would have noticed (e.g., wrong window position)
+
+EXCLUDE (technical/internal):
+- Variable/function/class renames
+- Code refactoring
+- Memory leaks, performance optimizations (unless dramatic)
+- Typo fixes (unless user-visible text)
+- CI/CD, build system, documentation changes
+- Dependency updates
 
 $source_desc:
 $content
@@ -65,9 +77,12 @@ Format:
 - (improvements)
 
 🐛 **Fixed**
-- (fixes)
+- (fixes users would notice)
 
-Skip empty categories. One sentence per item."
+Rules:
+- Skip empty categories
+- One sentence per item, plain language
+- Describe WHAT changed for users, not code details"
 }
 
 # Translate to Chinese
