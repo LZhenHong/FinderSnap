@@ -31,6 +31,9 @@ main() {
         -derivedDataPath "$BUILD_DIR/DerivedData" \
         -archivePath "$BUILD_DIR/$PRODUCT_NAME.xcarchive" \
         -skipMacroValidation \
+        CODE_SIGN_IDENTITY="-" \
+        CODE_SIGNING_REQUIRED=NO \
+        CODE_SIGNING_ALLOWED=NO \
         archive 2>&1 | grep -E "(error:|warning:|\*\*)" || true
 
     [[ ! -d "$BUILD_DIR/$PRODUCT_NAME.xcarchive" ]] && { print_error "Build failed"; exit 1; }
