@@ -20,8 +20,9 @@
 - Position windows at screen center or custom coordinates
 - Choose target screen (main display or current display)
 - Apply settings only to the first window or all new windows
-- Smooth window animations with easeOut effect
+- Smooth window animations with configurable duration
 - Smart exclusions: Quick Look previews and DMG installer windows are not affected
+- Check for updates from GitHub Releases
 - Lives in menu bar with minimal resource usage
 
 ## Requirements
@@ -55,6 +56,25 @@ The built app will be located in the `build/Release` directory.
 - 简体中文 (Simplified Chinese)
 - 繁體中文 (Traditional Chinese)
 
+## Development
+
+### Release
+
+```bash
+# Configure API key for AI-powered changelog generation
+cp .env.example .env
+# Edit .env and add your DEEPSEEK_API_KEY
+
+# Generate changelog, build, and create tag
+make release
+
+# Or run steps individually
+make changelog       # Generate changelog from git log
+make changelog-diff  # Generate changelog from git diff (more accurate)
+make build           # Build and package app
+make tag             # Create git tag
+```
+
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
@@ -63,3 +83,4 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [StorageMacro](https://github.com/LZhenHong/StorageMacro) - Swift macro for UserDefaults persistence
 - [SettingsKit](https://github.com/LZhenHong/SettingsKit) - SwiftUI settings window framework
+- [AppUpdater](https://github.com/s1ntoneli/AppUpdater) - GitHub Releases based app updater

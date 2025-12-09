@@ -16,6 +16,19 @@ xcodebuild -project FinderSnap/FinderSnap.xcodeproj -scheme FinderSnap -configur
 xcodebuild -project FinderSnap/FinderSnap.xcodeproj -scheme FinderSnap -configuration Release build
 ```
 
+## Release Commands
+
+```bash
+make changelog       # Generate changelog from git log (requires DEEPSEEK_API_KEY)
+make changelog-diff  # Generate changelog from git diff (more accurate)
+make build           # Build and package app to releases/<version>/
+make tag             # Create git tag
+make release         # Full release (changelog + build + tag)
+make clean           # Clean build artifacts
+```
+
+Configure API key in `.env` (copy from `.env.example`).
+
 ## Architecture
 
 ### Directory Structure
