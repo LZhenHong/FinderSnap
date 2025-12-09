@@ -59,39 +59,6 @@ jobs:
         env:
           TAP_GITHUB_TOKEN: ${{ secrets.TAP_GITHUB_TOKEN }}
         run: |
-          VERSION="${{ steps.version.outputs.version }}"
-          ZIP_PATH="releases/$VERSION/FinderSnap-$VERSION.zip"
-          SHA256=$(shasum -a 256 "$ZIP_PATH" | awk '{print $1}')
-
-          # Clone tap repo
-          git clone https://x-access-token:${TAP_GITHUB_TOKEN}@github.com/LZhenHong/homebrew-tap.git tap-repo
-          cd tap-repo
-
-          # Update cask file
-          mkdir -p Casks
-          cat > Casks/findersnap.rb << EOF
-          cask "findersnap" do
-            version "$VERSION"
-            sha256 "$SHA256"
-
-            url "https://github.com/LZhenHong/FinderSnap/releases/download/#{version}/FinderSnap-#{version}.zip"
-            name "FinderSnap"
-            desc "Automatically resize and position new Finder windows on macOS"
-            homepage "https://github.com/LZhenHong/FinderSnap"
-
-            depends_on macos: ">= :sonoma"
-
-            app "FinderSnap.app"
-
-            zap trash: [
-              "~/Library/Preferences/com.lzhlovesjyq.FinderSnap.plist",
-            ]
-          end
-          EOF
-
-          # Commit and push
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add -A
-          git commit -m "Update FinderSnap to $VERSION" || echo "No changes"
-          git push
+          git clone https://x-access-token:${TAP_GITHUB_TOKEN}@github.com/LZhenHong/homebrew-tap.git ../homebrew-tap
+          make homebrew TAP_REPO=../homebrew-tap
+          cd ../homebrew-tap && git push
