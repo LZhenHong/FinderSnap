@@ -30,6 +30,7 @@ main() {
         -configuration Release \
         -derivedDataPath "$BUILD_DIR/DerivedData" \
         -archivePath "$BUILD_DIR/$PRODUCT_NAME.xcarchive" \
+        -skipMacroValidation \
         archive 2>&1 | grep -E "(error:|warning:|\*\*)" || true
 
     [[ ! -d "$BUILD_DIR/$PRODUCT_NAME.xcarchive" ]] && { print_error "Build failed"; exit 1; }
