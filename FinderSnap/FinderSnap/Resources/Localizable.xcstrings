@@ -100,6 +100,22 @@
         }
       }
     },
+    "Changelog" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新日志"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "更新日誌"
+          }
+        }
+      }
+    },
     "Check for Updates" : {
       "localizations" : {
         "zh-Hans" : {
