@@ -14,6 +14,12 @@ main() {
 
     print_info "Version: $version (build $build)"
 
+    # Update build number in Xcode project
+    print_info "Updating build number..."
+    cd "$PROJECT_ROOT/FinderSnap"
+    agvtool new-version -all "$build" > /dev/null
+    cd "$PROJECT_ROOT"
+
     # Clean & build
     rm -rf "$BUILD_DIR"
     mkdir -p "$BUILD_DIR"
@@ -24,7 +30,6 @@ main() {
         -configuration Release \
         -derivedDataPath "$BUILD_DIR/DerivedData" \
         -archivePath "$BUILD_DIR/$PRODUCT_NAME.xcarchive" \
-        CURRENT_PROJECT_VERSION="$build" \
         archive 2>&1 | grep -E "(error:|warning:|\*\*)" || true
 
     [[ ! -d "$BUILD_DIR/$PRODUCT_NAME.xcarchive" ]] && { print_error "Build failed"; exit 1; }

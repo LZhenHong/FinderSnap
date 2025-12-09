@@ -1,0 +1,56 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      commit_changes:
+        description: 'Commit build changes to repository'
+        type: boolean
+        default: true
+
+jobs:
+  release:
+    runs-on: macos-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Get Version
+        id: version
+        run: |
+          VERSION=$(xcodebuild -project FinderSnap/FinderSnap.xcodeproj -showBuildSettings -scheme FinderSnap 2>/dev/null | grep MARKETING_VERSION | head -1 | awk '{print $3}')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Generate Changelog
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: make changelog
+
+      - name: Build
+        run: make build
+
+      - name: Commit & Tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ "${{ inputs.commit_changes }}" = "true" ]; then
+            git add -A
+            git commit -m "[RELEASE] ${{ steps.version.outputs.version }}" || echo "No changes to commit"
+          fi
+          git tag -a "${{ steps.version.outputs.version }}" -m "Release ${{ steps.version.outputs.version }}"
+          git push origin HEAD --tags
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.version }}
+          name: FinderSnap ${{ steps.version.outputs.version }}
+          body_path: releases/${{ steps.version.outputs.version }}/CHANGELOG.en.md
+          files: |
+            releases/${{ steps.version.outputs.version }}/FinderSnap-${{ steps.version.outputs.version }}.zip
+            releases/${{ steps.version.outputs.version }}/CHANGELOG.*.md
