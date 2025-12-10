@@ -22,7 +22,6 @@
 - Apply settings only to the first window or all new windows
 - Smooth window animations with configurable duration
 - Smart exclusions: Quick Look previews and DMG installer windows are not affected
-- Check for updates from GitHub Releases
 - Lives in menu bar with minimal resource usage
 
 ## Requirements
@@ -31,6 +30,13 @@
 - Accessibility permission (prompted on first launch)
 
 ## Installation
+
+### Homebrew
+
+```bash
+brew tap LZhenHong/tap
+brew install --cask findersnap
+```
 
 ### Build from Source
 
@@ -93,4 +99,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - [StorageMacro](https://github.com/LZhenHong/StorageMacro) - Swift macro for UserDefaults persistence
 - [SettingsKit](https://github.com/LZhenHong/SettingsKit) - SwiftUI settings window framework
-- [AppUpdater](https://github.com/s1ntoneli/AppUpdater) - GitHub Releases based app updater
