@@ -32,8 +32,8 @@ main() {
         -archivePath "$BUILD_DIR/$PRODUCT_NAME.xcarchive" \
         -skipMacroValidation \
         CODE_SIGN_IDENTITY="-" \
-        CODE_SIGNING_REQUIRED=NO \
-        CODE_SIGNING_ALLOWED=NO \
+        CODE_SIGNING_REQUIRED=YES \
+        CODE_SIGNING_ALLOWED=YES \
         SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited)' \
         archive 2>&1 | grep -E "(error:|warning:|\*\*)" || true
 

@@ -54,6 +54,12 @@ cask "findersnap" do
 
   app "FinderSnap.app"
 
+  postflight do
+    system_command "/usr/bin/xattr",
+                   args: ["-cr", "#{appdir}/FinderSnap.app"],
+                   sudo: false
+  end
+
   zap trash: [
     "~/Library/Preferences/com.lzhlovesjyq.FinderSnap.plist",
   ]
