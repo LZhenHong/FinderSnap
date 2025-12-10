@@ -22,6 +22,7 @@
 - Multi-display support (main screen or active screen)
 - Smooth window transition animations
 - Smart exclusions for Quick Look and DMG windows
+- Automatic update checking with localized changelogs
 
 ## Requirements
 

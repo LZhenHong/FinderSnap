@@ -46,6 +46,8 @@ Source files are in `FinderSnap/FinderSnap/FinderSnap/`:
 - **FinderWindowFixer.swift** - Finder-specific singleton; determines which windows to resize (excludes Quick Look and DMG windows) and calculates target frames
 - **WindowAnimator.swift** - CVDisplayLink-based animator for smooth window transitions with easeOutCubic easing
 - **AXUtils.swift** - Accessibility permission checking and status publishing via Combine
+- **UpdateChecker.swift** - GitHub release checker with localized changelog support; fetches releases from GitHub API, compares semantic versions, downloads localized `CHANGELOG.<lang>.md` assets
+- **GitHubRelease.swift** - GitHub API response models and `SemanticVersion` type for version comparison (handles prerelease tags like `-beta`, `-rc`)
 
 ### Key Patterns
 
@@ -53,6 +55,7 @@ Source files are in `FinderSnap/FinderSnap/FinderSnap/`:
 - Settings persistence via [StorageMacro](https://github.com/LZhenHong/StorageMacro) (`@storage` macro wraps UserDefaults)
 - Menu bar app (LSUIElement = YES) with no dock icon
 - Settings window built with SwiftUI using [SettingsKit](https://github.com/LZhenHong/SettingsKit)
+- Update checker uses GitHub Releases API directly (no third-party dependencies); supports localized changelogs via release assets
 
 ### Extensions
 
