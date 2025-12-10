@@ -1,13 +1,22 @@
 {
-  "originHash" : "94fd07f8ab78714bd6dad1ea254a22a0017f7663a582274c30d4eb562ca0a3ef",
+  "originHash" : "ff9c3f527ff5d1e55ef5709f2b16ab660eba1fafe94ce48e4c1ae6ca2661d10a",
   "pins" : [
+    {
+      "identity" : "networkimage",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/NetworkImage",
+      "state" : {
+        "revision" : "2849f5323265386e200484b0d0f896e73c3411b9",
+        "version" : "6.0.1"
+      }
+    },
     {
       "identity" : "settingskit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LZhenHong/SettingsKit.git",
       "state" : {
-        "revision" : "4fc0e89a929a9b0cfa7ceff81590fa909de345f3",
-        "version" : "0.0.1"
+        "revision" : "49f74177cf5aa2c97438212437687739e5d52d34",
+        "version" : "0.0.3"
       }
     },
     {
@@ -15,8 +24,26 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/LZhenHong/StorageMacro",
       "state" : {
-        "revision" : "3c8426cb7629009f6df3dc8cc0fb708187f75750",
-        "version" : "0.0.2"
+        "revision" : "4a8c12b505399e6e6893bb4ac4f22b4d9ffc98ee",
+        "version" : "0.0.3"
+      }
+    },
+    {
+      "identity" : "swift-cmark",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/swiftlang/swift-cmark",
+      "state" : {
+        "revision" : "5d9bdaa4228b381639fff09403e39a04926e2dbe",
+        "version" : "0.7.1"
+      }
+    },
+    {
+      "identity" : "swift-markdown-ui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/gonzalezreal/swift-markdown-ui.git",
+      "state" : {
+        "revision" : "5f613358148239d0292c0cef674a3c2314737f9e",
+        "version" : "2.4.1"
       }
     },
     {

@@ -14,6 +14,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
   func applicationDidFinishLaunching(_: Notification) {
     AXUtils.checkIsTrusted()
+
+    // Initialize update checker and check on launch if configured
+    UpdateChecker.shared.checkOnLaunchIfNeeded()
+
     MenuBarItemController.shared.setUp()
 
     FinderWindowFixer.shared()

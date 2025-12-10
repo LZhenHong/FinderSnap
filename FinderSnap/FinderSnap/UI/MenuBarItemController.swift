@@ -14,7 +14,7 @@ final class MenuBarItemController {
   private var statusItem: NSStatusItem!
 
   private lazy var settingsWindowController = SettingsWindowController(
-    panes: [GeneralSettingPane(), AboutSettingPane()],
+    panes: [GeneralSettingPane(), UpdateSettingPane(), AboutSettingPane()],
     title: String(localized: "Settings")
   )
 
@@ -80,6 +80,16 @@ final class MenuBarItemController {
 
   private func createMenu() -> NSMenu {
     NSMenu {
+      // Update available notification
+      if let version = UpdateChecker.shared.updateVersionPublisher.value {
+        MenuItemBuilder()
+          .title(String(localized: "Update Available (\(version))"))
+          .onSelect {
+            self.settingsWindowController.show(paneIndex: 1)
+          }
+        NSMenuItem.separator()
+      }
+
       if !AXUtils.trusted {
         MenuItemBuilder()
           .title(String(localized: "Open Accessibility Settings"))
@@ -98,7 +108,7 @@ final class MenuBarItemController {
         .title(String(localized: "Settings"))
         .keyEquivalent(",")
         .onSelect {
-          self.settingsWindowController.show(.statusBar)
+          self.settingsWindowController.show()
         }
       NSMenuItem.separator()
       MenuItemBuilder()

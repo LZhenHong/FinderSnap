@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		F232FEE92EDD9087003089FF /* SettingsKit in Frameworks */ = {isa = PBXBuildFile; productRef = F232FEE82EDD9087003089FF /* SettingsKit */; };
+		F2C79FF52EE93BE000F25B2D /* MarkdownUI in Frameworks */ = {isa = PBXBuildFile; productRef = F2C79FF42EE93BE000F25B2D /* MarkdownUI */; };
 		F2EFDD442BEBCEAF001A9B6D /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = F2EFDD432BEBCEAF001A9B6D /* Storage */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C79FF52EE93BE000F25B2D /* MarkdownUI in Frameworks */,
 				F232FEE92EDD9087003089FF /* SettingsKit in Frameworks */,
 				F2EFDD442BEBCEAF001A9B6D /* Storage in Frameworks */,
 			);
@@ -72,6 +74,7 @@
 			packageProductDependencies = (
 				F2EFDD432BEBCEAF001A9B6D /* Storage */,
 				F232FEE82EDD9087003089FF /* SettingsKit */,
+				F2C79FF42EE93BE000F25B2D /* MarkdownUI */,
 			);
 			productName = FinderEnhancer;
 			productReference = F215A82F2BE7D7E4008AB0C4 /* FinderSnap.app */;
@@ -106,6 +109,7 @@
 			packageReferences = (
 				F2EFDD422BEBCEAF001A9B6D /* XCRemoteSwiftPackageReference "StorageMacro" */,
 				F232FEE72EDD9087003089FF /* XCRemoteSwiftPackageReference "SettingsKit" */,
+				F2C79FF32EE93BE000F25B2D /* XCRemoteSwiftPackageReference "swift-markdown-ui" */,
 			);
 			productRefGroup = F215A8302BE7D7E4008AB0C4 /* Products */;
 			projectDirPath = "";
@@ -360,7 +364,15 @@
 			repositoryURL = "https://github.com/LZhenHong/SettingsKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.1;
+				minimumVersion = 0.0.3;
+			};
+		};
+		F2C79FF32EE93BE000F25B2D /* XCRemoteSwiftPackageReference "swift-markdown-ui" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gonzalezreal/swift-markdown-ui";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.1;
 			};
 		};
 		F2EFDD422BEBCEAF001A9B6D /* XCRemoteSwiftPackageReference "StorageMacro" */ = {
@@ -368,7 +380,7 @@
 			repositoryURL = "https://github.com/LZhenHong/StorageMacro";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.0.2;
+				minimumVersion = 0.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -378,6 +390,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = F232FEE72EDD9087003089FF /* XCRemoteSwiftPackageReference "SettingsKit" */;
 			productName = SettingsKit;
+		};
+		F2C79FF42EE93BE000F25B2D /* MarkdownUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F2C79FF32EE93BE000F25B2D /* XCRemoteSwiftPackageReference "swift-markdown-ui" */;
+			productName = MarkdownUI;
 		};
 		F2EFDD432BEBCEAF001A9B6D /* Storage */ = {
 			isa = XCSwiftPackageProductDependency;
