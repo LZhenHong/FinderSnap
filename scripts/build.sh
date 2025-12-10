@@ -34,7 +34,7 @@ main() {
         CODE_SIGN_IDENTITY="-" \
         CODE_SIGNING_REQUIRED=NO \
         CODE_SIGNING_ALLOWED=NO \
-        SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited) DISABLE_UPDATE_CHECK' \
+        SWIFT_ACTIVE_COMPILATION_CONDITIONS='$(inherited)' \
         archive 2>&1 | grep -E "(error:|warning:|\*\*)" || true
 
     [[ ! -d "$BUILD_DIR/$PRODUCT_NAME.xcarchive" ]] && { print_error "Build failed"; exit 1; }
