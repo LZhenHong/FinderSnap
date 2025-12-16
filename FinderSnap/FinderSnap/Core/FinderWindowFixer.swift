@@ -150,7 +150,9 @@ private extension FinderWindowFixer {
   static func hasNoValidWindow(_ windows: [AXUIElement]) -> Bool {
     guard !windows.isEmpty else { return true }
 
-    return windows.allSatisfy { $0.axRole == nil }
+    // Only count actual windows (AXWindow role), not other UI elements
+    // like AXScrollArea (desktop view) that Finder reports on macOS 26+
+    return windows.allSatisfy { $0.axRole != kAXWindowRole }
   }
 }
 
