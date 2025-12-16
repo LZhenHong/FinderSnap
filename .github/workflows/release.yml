@@ -20,6 +20,17 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Setup Xcode
+        uses: maxim-lobanov/setup-xcode@v1
+        with:
+          xcode-version: latest-stable
+
+      - name: Print Environment Info
+        run: |
+          echo "macOS Version: $(sw_vers -productVersion)"
+          echo "Xcode Version: $(xcodebuild -version | head -1)"
+          echo "Xcode Path: $(xcode-select -p)"
+
       - name: Get Version
         id: version
         run: |
