@@ -24,6 +24,19 @@ enum FinderWindowFixer {
     instance = fixer
     return fixer
   }
+
+  /// Process existing Finder windows (call after delayed initialization due to permission grant)
+  static func processExistingWindows() {
+    guard let finderApp = NSRunningApplication
+      .runningApplications(withBundleIdentifier: .finderBundleIdentifier)
+      .first
+    else { return }
+
+    let axApp = AXUIElementCreateApplication(finderApp.processIdentifier)
+    guard let windows = axApp.axWindows else { return }
+
+    handleNewWindows(windows, previousWindows: [])
+  }
 }
 
 // MARK: - Window Event Handling

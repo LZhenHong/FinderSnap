@@ -6,8 +6,11 @@
 //
 
 import Cocoa
+import Combine
 
 class AppDelegate: NSObject, NSApplicationDelegate {
+  private var permissionCancellable: AnyCancellable?
+
   func applicationWillFinishLaunching(_: Notification) {
     populateMainMenu()
   }
@@ -20,13 +23,54 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     MenuBarItemController.shared.setUp()
 
-    FinderWindowFixer.shared()
+    initializeWindowFixerWhenAuthorized()
   }
 
   func applicationDidBecomeActive(_: Notification) {
     AXUtils.checkTrustStatus()
   }
 }
+
+// MARK: - Window Fixer Setup
+
+private extension AppDelegate {
+  func initializeWindowFixerWhenAuthorized() {
+    // If already authorized, initialize immediately
+    if AXUtils.trusted {
+      FinderWindowFixer.shared()
+      return
+    }
+
+    // Listen for Finder activation to trigger permission check
+    // This handles the case where user grants permission then opens Finder directly
+    var finderObserver: NSObjectProtocol?
+    finderObserver = NSWorkspace.shared.notificationCenter.addObserver(
+      forName: NSWorkspace.didActivateApplicationNotification,
+      object: nil,
+      queue: .main
+    ) { notification in
+      guard let app = notification.userInfo?[NSWorkspace.applicationUserInfoKey] as? NSRunningApplication,
+            app.bundleIdentifier == "com.apple.finder"
+      else { return }
+      AXUtils.checkTrustStatus()
+    }
+
+    // When permission is granted, remove Finder observer and initialize WindowFixer
+    permissionCancellable = AXUtils.trustPublisher
+      .first(where: { $0 })
+      .sink { [weak self] _ in
+        self?.permissionCancellable = nil
+        if let observer = finderObserver {
+          NSWorkspace.shared.notificationCenter.removeObserver(observer)
+        }
+        FinderWindowFixer.shared()
+        // Process any existing windows that were opened before initialization
+        FinderWindowFixer.processExistingWindows()
+      }
+  }
+}
+
+// MARK: - Menu Setup
 
 extension AppDelegate {
   func populateMainMenu() {
