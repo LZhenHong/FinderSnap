@@ -42,7 +42,9 @@ final class MenuItemBuilder {
   func onEnable(_ publisher: AnyPublisher<Bool, Never>) -> Self {
     publisher
       .receive(on: DispatchQueue.main)
-      .assign(to: \.isEnabled, on: menuItem)
+      .sink { [weak menuItem] isEnabled in
+        menuItem?.isEnabled = isEnabled
+      }
       .store(in: &subscriptions)
     return self
   }
@@ -51,8 +53,9 @@ final class MenuItemBuilder {
   func onHighlight(_ publisher: AnyPublisher<Bool, Never>) -> Self {
     publisher
       .receive(on: DispatchQueue.main)
-      .map { $0 ? NSControl.StateValue.on : .off }
-      .assign(to: \.state, on: menuItem)
+      .sink { [weak menuItem] isHighlighted in
+        menuItem?.state = isHighlighted ? .on : .off
+      }
       .store(in: &subscriptions)
     return self
   }
