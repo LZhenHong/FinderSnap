@@ -49,6 +49,3 @@ extension CGPoint: @retroactive RawRepresentable {
   public typealias RawValue = String
 }
 
-extension Array: @retroactive RawRepresentable where Element: Codable {
-  public typealias RawValue = String
-}
