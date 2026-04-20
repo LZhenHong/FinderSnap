@@ -44,7 +44,8 @@ final class MenuBarItemController {
     return statusItem
   }
 
-  @objc private func onStatusBarItemHandle(_ sender: NSStatusBarButton) {
+  @objc
+  private func onStatusBarItemHandle(_ sender: NSStatusBarButton) {
     guard let event = NSApp.currentEvent,
           event.type == .leftMouseUp
     else { return }

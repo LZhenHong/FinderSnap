@@ -132,7 +132,7 @@ struct GeneralSettingView: View {
     .padding(.leading, 12)
   }
 
-  @ViewBuilder var screenView: some View {
+  var screenView: some View {
     Picker(selection: $state.screen, label: Text("Place window to:")) {
       Text("Main Screen")
         .tag(AppState.WindowScreen.main)
@@ -143,7 +143,7 @@ struct GeneralSettingView: View {
     .padding(.leading, 12)
   }
 
-  @ViewBuilder var onlyEffectFirstTimeView: some View {
+  var onlyEffectFirstTimeView: some View {
     Toggle("Only effect to first Finder's window.", isOn: $state.effectFirstWindow)
   }
 

@@ -64,7 +64,8 @@ private extension WindowFixer {
     )
   }
 
-  @objc func handleAppWillLaunch(_ notification: Notification) {
+  @objc
+  func handleAppWillLaunch(_ notification: Notification) {
     guard let app = notification.runningApplication,
           app.bundleIdentifier == appBundleIdentifier
     else {

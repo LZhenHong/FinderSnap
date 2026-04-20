@@ -101,7 +101,8 @@ private extension MenuItemBuilder {
 
     private init() {}
 
-    @objc func execute(_ item: NSMenuItem) {
+    @objc
+    func execute(_ item: NSMenuItem) {
       guard let (handler, _) = item.representedObject as? (() -> Void, Set<AnyCancellable>) else {
         return
       }

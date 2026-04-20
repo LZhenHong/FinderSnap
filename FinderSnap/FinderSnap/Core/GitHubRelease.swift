@@ -143,12 +143,15 @@ struct SemanticVersion: Comparable, CustomStringConvertible {
       switch (lNum, rNum) {
       case let (ln?, rn?):
         if ln != rn { return ln < rn ? .orderedAscending : .orderedDescending }
+
       case (nil, nil):
         let cmp = lStr.compare(rStr)
         if cmp != .orderedSame { return cmp }
+
       case (_?, nil):
         // Numeric identifiers always have lower precedence than non-numeric
         return .orderedAscending
+
       case (nil, _?):
         return .orderedDescending
       }

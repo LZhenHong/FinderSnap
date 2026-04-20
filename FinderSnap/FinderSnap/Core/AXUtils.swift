@@ -22,8 +22,7 @@ enum AXUtils {
     }
 
     let key = kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String
-    let trust = AXIsProcessTrustedWithOptions([key: true] as CFDictionary)
-    return trust
+    return AXIsProcessTrustedWithOptions([key: true] as CFDictionary)
   }
 
   static func openAccessibilitySetting() {

@@ -11,15 +11,18 @@ import SwiftUI
 @storage
 class AppState: ObservableObject {
   enum WindowPlace: Int {
-    case center, custom
+    case center
+    case custom
   }
 
   enum WindowScreen: Int {
-    case main, current
+    case main
+    case current
   }
 
   enum UpdateCheckInterval: Int {
-    case daily, weekly
+    case daily
+    case weekly
 
     var timeInterval: TimeInterval {
       switch self {
