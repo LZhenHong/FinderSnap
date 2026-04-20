@@ -126,8 +126,42 @@ struct SemanticVersion: Comparable, CustomStringConvertible {
     case (_, nil):
       return true // lhs (prerelease) < rhs (stable)
     case let (lhsPre?, rhsPre?):
-      return lhsPre.localizedStandardCompare(rhsPre) == .orderedAscending
+      return comparePrerelease(lhsPre, rhsPre) == .orderedAscending
     }
+  }
+
+  private static func comparePrerelease(_ lhs: String, _ rhs: String) -> ComparisonResult {
+    let lhsIdentifiers = lhs.split(separator: ".")
+    let rhsIdentifiers = rhs.split(separator: ".")
+
+    for (l, r) in zip(lhsIdentifiers, rhsIdentifiers) {
+      let lStr = String(l)
+      let rStr = String(r)
+      let lNum = Int(lStr)
+      let rNum = Int(rStr)
+
+      switch (lNum, rNum) {
+      case let (ln?, rn?):
+        if ln != rn { return ln < rn ? .orderedAscending : .orderedDescending }
+      case (nil, nil):
+        let cmp = lStr.compare(rStr)
+        if cmp != .orderedSame { return cmp }
+      case (_?, nil):
+        // Numeric identifiers always have lower precedence than non-numeric
+        return .orderedAscending
+      case (nil, _?):
+        return .orderedDescending
+      }
+    }
+
+    // Shorter prerelease is greater when all compared identifiers are equal
+    // e.g., 1.0.0-alpha < 1.0.0-alpha.1
+    if lhsIdentifiers.count < rhsIdentifiers.count {
+      return .orderedAscending
+    } else if lhsIdentifiers.count > rhsIdentifiers.count {
+      return .orderedDescending
+    }
+    return .orderedSame
   }
 
   static func == (lhs: SemanticVersion, rhs: SemanticVersion) -> Bool {
