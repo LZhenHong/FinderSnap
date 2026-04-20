@@ -48,6 +48,7 @@ final class UpdateChecker: ObservableObject {
 
     guard shouldCheck else { return }
 
+    backgroundTask?.cancel()
     backgroundTask = Task {
       try? await checkForUpdates()
     }
@@ -60,7 +61,9 @@ final class UpdateChecker: ObservableObject {
     defer { isChecking = false }
 
     do {
+      try Task.checkCancellation()
       let releases = try await fetchReleases()
+      try Task.checkCancellation()
       let state = AppState.shared
 
       // Filter releases based on prerelease preference
