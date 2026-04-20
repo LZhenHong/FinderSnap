@@ -39,6 +39,7 @@ final class WindowFixer {
 
   deinit {
     NSWorkspace.shared.notificationCenter.removeObserver(self)
+    detachObserver()
   }
 }
 
