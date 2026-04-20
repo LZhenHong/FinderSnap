@@ -45,16 +45,11 @@ final class MenuBarItemController {
   }
 
   @objc private func onStatusBarItemHandle(_ sender: NSStatusBarButton) {
-    guard let event = NSApp.currentEvent else { return }
+    guard let event = NSApp.currentEvent,
+          event.type == .leftMouseUp
+    else { return }
 
-    switch event.type {
-    case .leftMouseUp:
-      showMenu(sender)
-    case .rightMouseUp:
-      break
-    default:
-      break
-    }
+    showMenu(sender)
   }
 
   private func showMenu(_: NSStatusBarButton) {
