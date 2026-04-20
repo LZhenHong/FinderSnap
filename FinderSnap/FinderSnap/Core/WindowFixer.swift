@@ -92,8 +92,6 @@ private extension WindowFixer {
     detachObserver()
 
     let pid = app.processIdentifier
-    debugPrint("Attaching observer to application with pid: \(pid)")
-
     axApplication = AXUIElementCreateApplication(pid)
 
     guard let observer = createObserver(for: pid),
