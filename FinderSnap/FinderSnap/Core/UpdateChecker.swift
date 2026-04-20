@@ -187,7 +187,12 @@ final class UpdateChecker: ObservableObject {
   }
 
   private func fetchAssetData(_ asset: GitHubRelease.Asset) async throws -> Data {
-    let (data, _) = try await URLSession.shared.data(from: asset.browserDownloadUrl)
+    let (data, response) = try await URLSession.shared.data(from: asset.browserDownloadUrl)
+    guard let httpResponse = response as? HTTPURLResponse,
+          httpResponse.statusCode == 200
+    else {
+      throw UpdateError.networkError
+    }
     return data
   }
 
