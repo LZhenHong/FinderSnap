@@ -39,6 +39,7 @@ final class WindowFixer {
 
   deinit {
     NSWorkspace.shared.notificationCenter.removeObserver(self)
+    detachObserver()
   }
 }
 
@@ -63,7 +64,8 @@ private extension WindowFixer {
     )
   }
 
-  @objc func handleAppWillLaunch(_ notification: Notification) {
+  @objc
+  func handleAppWillLaunch(_ notification: Notification) {
     guard let app = notification.runningApplication,
           app.bundleIdentifier == appBundleIdentifier
     else {
@@ -91,8 +93,6 @@ private extension WindowFixer {
     detachObserver()
 
     let pid = app.processIdentifier
-    debugPrint("Attaching observer to application with pid: \(pid)")
-
     axApplication = AXUIElementCreateApplication(pid)
 
     guard let observer = createObserver(for: pid),

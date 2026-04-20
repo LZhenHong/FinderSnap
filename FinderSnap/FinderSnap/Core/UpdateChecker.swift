@@ -48,6 +48,7 @@ final class UpdateChecker: ObservableObject {
 
     guard shouldCheck else { return }
 
+    backgroundTask?.cancel()
     backgroundTask = Task {
       try? await checkForUpdates()
     }
@@ -60,7 +61,9 @@ final class UpdateChecker: ObservableObject {
     defer { isChecking = false }
 
     do {
+      try Task.checkCancellation()
       let releases = try await fetchReleases()
+      try Task.checkCancellation()
       let state = AppState.shared
 
       // Filter releases based on prerelease preference
@@ -184,7 +187,12 @@ final class UpdateChecker: ObservableObject {
   }
 
   private func fetchAssetData(_ asset: GitHubRelease.Asset) async throws -> Data {
-    let (data, _) = try await URLSession.shared.data(from: asset.browserDownloadUrl)
+    let (data, response) = try await URLSession.shared.data(from: asset.browserDownloadUrl)
+    guard let httpResponse = response as? HTTPURLResponse,
+          httpResponse.statusCode == 200
+    else {
+      throw UpdateError.networkError
+    }
     return data
   }
 

@@ -39,6 +39,8 @@ final class WindowAnimator {
   // MARK: - Public Methods
 
   func start() {
+    guard retainedSelf == nil else { return }
+
     var displayLink: CVDisplayLink?
     CVDisplayLinkCreateWithActiveCGDisplays(&displayLink)
 

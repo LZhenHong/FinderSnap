@@ -52,7 +52,6 @@ struct UpdateSettingView: View {
 
   // MARK: - Update Section
 
-  @ViewBuilder
   private var updateSection: some View {
     VStack(alignment: .leading, spacing: 12) {
       // Status display
@@ -116,7 +115,6 @@ struct UpdateSettingView: View {
 
   // MARK: - Settings Section
 
-  @ViewBuilder
   private var settingsSection: some View {
     VStack(alignment: .leading, spacing: 6) {
       Toggle("Automatically check for updates", isOn: $state.autoCheckUpdates)
@@ -144,7 +142,6 @@ struct UpdateSettingView: View {
 
   // MARK: - Installation Section
 
-  @ViewBuilder
   private var installationSection: some View {
     VStack(alignment: .leading, spacing: 8) {
       Text("Installation Options")
@@ -170,7 +167,6 @@ struct UpdateSettingView: View {
     .padding(.top, 10)
   }
 
-  @ViewBuilder
   private func homebrewCommandRow(_ command: String) -> some View {
     HStack {
       Text(command)

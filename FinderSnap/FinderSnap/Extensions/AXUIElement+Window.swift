@@ -13,9 +13,7 @@ extension AXUIElement {
   /// Determines if this window should be resized.
   /// Excludes special windows like Quick Look and DMG installer windows.
   var shouldResize: Bool {
-    let dominated = isQuickLookWindow || isDiskImageWindow
-    debugPrint("Window shouldResize: \(!dominated), isQuickLook: \(isQuickLookWindow), isDiskImage: \(isDiskImageWindow)")
-    return !dominated
+    !isQuickLookWindow && !isDiskImageWindow
   }
 
   var isQuickLookWindow: Bool {
@@ -25,11 +23,8 @@ extension AXUIElement {
   /// Checks if this window displays a mounted disk image (DMG).
   var isDiskImageWindow: Bool {
     guard let title = axTitle else {
-      debugPrint("isDiskImageWindow: no window title")
       return false
     }
-
-    debugPrint("isDiskImageWindow: window title = \(title)")
 
     let volumeURL = URL.volume(named: title)
 
@@ -38,13 +33,10 @@ extension AXUIElement {
     guard FileManager.default.fileExists(atPath: volumeURL.path, isDirectory: &isDirectory),
           isDirectory.boolValue
     else {
-      debugPrint("isDiskImageWindow: \(volumeURL.path) is not a valid directory")
       return false
     }
 
-    let isDiskImage = volumeURL.isDiskImage
-    debugPrint("isDiskImageWindow: isDiskImage = \(isDiskImage)")
-    return isDiskImage
+    return volumeURL.isDiskImage
   }
 }
 
