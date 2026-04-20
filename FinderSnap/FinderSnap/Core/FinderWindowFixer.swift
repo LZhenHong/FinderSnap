@@ -12,6 +12,7 @@ import Cocoa
 enum FinderWindowFixer {
   private static var instance: WindowFixer?
 
+  /// Must be called on the main thread.
   @discardableResult
   static func shared() -> WindowFixer {
     if let instance {
