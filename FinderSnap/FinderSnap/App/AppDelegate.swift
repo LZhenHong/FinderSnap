@@ -45,14 +45,30 @@ private extension AppDelegate {
   /// If `onboardingCompleted` key does not exist but other FinderSnap-specific
   /// keys do, this is an existing install — skip onboarding.
   func migrateOnboardingStateForExistingUsers() {
+    // Run only once per device to avoid re-evaluating on future upgrades.
+    guard UserDefaults.standard.object(forKey: "finderSnapMigrationCompleted") == nil else { return }
+
+    defer {
+      UserDefaults.standard.set(true, forKey: "finderSnapMigrationCompleted")
+    }
+
     guard UserDefaults.standard.object(forKey: "onboardingCompleted") == nil else { return }
 
-    // Check for keys that are explicitly written by code paths (not macro defaults),
-    // making this safe regardless of whether @storage eagerly writes defaults.
-    let isExistingUser = UserDefaults.standard.object(forKey: "lastCheckTimestamp") != nil
-      || UserDefaults.standard.object(forKey: "dismissedVersion") != nil
+    // Check for keys written by pre-onboarding versions.
+    // @storage eagerly writes defaults on AppState initialization, so any
+    // prior launch leaves traces in UserDefaults beyond these two fields.
+    let legacyKeys = [
+      "lastCheckTimestamp", "dismissedVersion",
+      "windowSize", "position", "animationDuration",
+      "resizeWindow", "placeWindow", "enableAnimation",
+      "autoCheckUpdates", "checkInterval", "includePrerelease",
+      "place", "screen", "effectFirstWindow",
+    ]
+    let hasLegacyData = legacyKeys.contains {
+      UserDefaults.standard.object(forKey: $0) != nil
+    }
 
-    if isExistingUser {
+    if hasLegacyData {
       UserDefaults.standard.set(true, forKey: "onboardingCompleted")
     }
   }

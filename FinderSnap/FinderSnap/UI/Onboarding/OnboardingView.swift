@@ -290,8 +290,8 @@ private extension OnboardingView {
         .foregroundStyle(.secondary)
       } else {
         Button(String(localized: "Open Settings")) {
-          completeOnboarding()
           onOpenSettings?()
+          completeOnboarding()
         }
         .buttonStyle(.plain)
         .foregroundStyle(.secondary)
