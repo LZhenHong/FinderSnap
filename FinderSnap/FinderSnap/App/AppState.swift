@@ -57,7 +57,24 @@ class AppState: ObservableObject {
     set { lastCheckTimestamp = newValue?.timeIntervalSince1970 }
   }
 
+  // Onboarding state
+  var onboardingCompleted = false
+
   static let shared = AppState()
 
   private init() {}
+
+  // MARK: - Recommended Defaults
+
+  /// Apply recommended settings for first-time users.
+  /// Called when user completes onboarding with "Quick Setup".
+  func applyRecommendedSettings() {
+    resizeWindow = true
+    windowSize = CGSize(width: 1200, height: 800)
+    placeWindow = true
+    place = .center
+    screen = .main
+    enableAnimation = true
+    animationDuration = 0.25
+  }
 }

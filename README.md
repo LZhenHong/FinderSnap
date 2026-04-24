@@ -23,6 +23,7 @@
 - Smooth window transition animations
 - Smart exclusions for Quick Look and DMG windows
 - Automatic update checking with localized changelogs
+- First-launch onboarding with guided Accessibility permission setup
 
 ## Requirements
 
@@ -65,8 +66,11 @@ Alternatively, build from source to avoid Gatekeeper restrictions.
 ## Usage
 
 1. **Launch FinderSnap** - The app icon appears in the menu bar
-2. **Grant Accessibility Permission** - Required for window manipulation (prompted on first launch)
-3. **Configure Settings** - Click the menu bar icon and select "Settings"
+2. **Complete Onboarding** - On first launch, a guided onboarding walks you through:
+   - Welcome overview of FinderSnap
+   - Granting Accessibility Permission (required for window manipulation)
+   - Quick setup with recommended defaults (resize to 1200×800, center on main screen, smooth animation)
+3. **Configure Settings** - Click the menu bar icon and select "Settings" to customize behavior
 4. **Enjoy** - New Finder windows will automatically be resized and positioned
 
 ## Development

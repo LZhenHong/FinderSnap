@@ -12,22 +12,70 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   private var permissionCancellable: AnyCancellable?
 
   func applicationWillFinishLaunching(_: Notification) {
+    migrateOnboardingStateForExistingUsers()
     populateMainMenu()
   }
 
   func applicationDidFinishLaunching(_: Notification) {
-    AXUtils.checkIsTrusted()
-
     // Initialize update checker and check on launch if configured
     UpdateChecker.shared.checkOnLaunchIfNeeded()
 
     MenuBarItemController.shared.setUp()
 
+    if !AppState.shared.onboardingCompleted {
+      showOnboarding()
+    } else {
+      AXUtils.checkIsTrusted()
+    }
+
+    // Always initialize window fixer — it handles both immediate setup
+    // (when already authorized) and deferred setup via permission publisher.
     initializeWindowFixerWhenAuthorized()
   }
 
   func applicationDidBecomeActive(_: Notification) {
     AXUtils.checkTrustStatus()
+  }
+}
+
+// MARK: - Onboarding
+
+private extension AppDelegate {
+  /// Migration for existing users upgrading from versions before onboarding.
+  /// If `onboardingCompleted` key does not exist but other FinderSnap-specific
+  /// keys do, this is an existing install — skip onboarding.
+  func migrateOnboardingStateForExistingUsers() {
+    // Run only once per device to avoid re-evaluating on future upgrades.
+    guard UserDefaults.standard.object(forKey: "finderSnapMigrationCompleted") == nil else { return }
+
+    defer {
+      UserDefaults.standard.set(true, forKey: "finderSnapMigrationCompleted")
+    }
+
+    guard UserDefaults.standard.object(forKey: "onboardingCompleted") == nil else { return }
+
+    // Check for keys written by pre-onboarding versions.
+    // @storage eagerly writes defaults on AppState initialization, so any
+    // prior launch leaves traces in UserDefaults beyond these two fields.
+    let legacyKeys = [
+      "lastCheckTimestamp", "dismissedVersion",
+      "windowSize", "position", "animationDuration",
+      "resizeWindow", "placeWindow", "enableAnimation",
+      "autoCheckUpdates", "checkInterval", "includePrerelease",
+      "place", "screen", "effectFirstWindow",
+    ]
+    let hasLegacyData = legacyKeys.contains {
+      UserDefaults.standard.object(forKey: $0) != nil
+    }
+
+    if hasLegacyData {
+      UserDefaults.standard.set(true, forKey: "onboardingCompleted")
+    }
+  }
+
+  func showOnboarding() {
+    let settingsWindowController = MenuBarItemController.shared.settingsWindowController
+    OnboardingWindowController.showIfNeeded(settingsWindowController: settingsWindowController)
   }
 }
 

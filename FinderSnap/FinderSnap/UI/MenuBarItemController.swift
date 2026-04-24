@@ -13,7 +13,7 @@ final class MenuBarItemController {
 
   private var statusItem: NSStatusItem!
 
-  private lazy var settingsWindowController = SettingsWindowController(
+  private(set) lazy var settingsWindowController = SettingsWindowController(
     panes: [GeneralSettingPane(), UpdateSettingPane(), AboutSettingPane()],
     title: String(localized: "Settings")
   )

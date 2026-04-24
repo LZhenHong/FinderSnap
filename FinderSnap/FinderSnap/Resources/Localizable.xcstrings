@@ -20,6 +20,22 @@
         }
       }
     },
+    "Access granted. You're all set!" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "权限已授予。一切就绪！"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "權限已授予。一切就緒！"
+          }
+        }
+      }
+    },
     "Accessibility access status:" : {
       "localizations" : {
         "zh-Hans" : {
@@ -84,6 +100,22 @@
         }
       }
     },
+    "Back" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "返回"
+          }
+        }
+      }
+    },
     "Center" : {
       "localizations" : {
         "zh-Hans" : {
@@ -96,6 +128,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "置中"
+          }
+        }
+      }
+    },
+    "Center on Main Screen" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在主屏幕居中"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "在主螢幕置中"
           }
         }
       }
@@ -164,6 +212,54 @@
         }
       }
     },
+    "Choose how you'd like FinderSnap to handle new Finder windows. You can always change this later in Settings." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "选择 FinderSnap 如何处理新的 Finder 窗口。您可以随时在设置中更改。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選擇 FinderSnap 如何處理新的 Finder 視窗。您可以隨時在設定中更改。"
+          }
+        }
+      }
+    },
+    "Click the button above to request permission, then turn on the switch next to FinderSnap in System Settings." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击上方按钮申请权限，然后在系统设置的辅助功能中打开 FinderSnap 旁边的开关。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點擊上方按鈕申請權限，然後在系統設定的輔助使用中開啟 FinderSnap 旁邊的切換開關。"
+          }
+        }
+      }
+    },
+    "Click the icon to access settings and controls." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "点击图标以访问设置和控件。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "點擊圖像以存取設定和控制項。"
+          }
+        }
+      }
+    },
     "Close Window" : {
       "comment" : "Close Window menu item",
       "localizations" : {
@@ -177,6 +273,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "關閉視窗"
+          }
+        }
+      }
+    },
+    "Continue" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "继续"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "繼續"
           }
         }
       }
@@ -261,6 +373,22 @@
         }
       }
     },
+    "Enable Accessibility Access" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "启用辅助功能访问"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "啟用輔助使用取用"
+          }
+        }
+      }
+    },
     "Enable window transition animation" : {
       "localizations" : {
         "zh-Hans" : {
@@ -310,6 +438,22 @@
         }
       }
     },
+    "FinderSnap needs Accessibility permission to resize and reposition Finder windows. This is a one-time setup." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FinderSnap 需要辅助功能权限来调整 Finder 窗口的大小和位置。这是一次性设置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FinderSnap 需要輔助使用權限來調整 Finder 視窗的大小與位置。這是一次性設定。"
+          }
+        }
+      }
+    },
     "FinderSnap requires Accessibility access to change Finder's window frame." : {
       "localizations" : {
         "zh-Hans" : {
@@ -322,6 +466,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "FinderSnap 需要輔助使用取用權限才能更改 Finder 的視窗位置與大小。"
+          }
+        }
+      }
+    },
+    "FinderSnap runs silently in your menu bar and automatically resizes and positions new Finder windows." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FinderSnap 在菜单栏静默运行，自动调整新 Finder 窗口的大小和位置。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "FinderSnap 在選單列靜默執行，自動調整新 Finder 視窗的大小與位置。"
           }
         }
       }
@@ -342,6 +502,22 @@
         }
       }
     },
+    "Get Started" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "开始使用"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開始使用"
+          }
+        }
+      }
+    },
     "GitHub API rate limit exceeded. Please try again later." : {
       "localizations" : {
         "zh-Hans" : {
@@ -354,6 +530,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "GitHub API 請求次數超限，請稍後再試。"
+          }
+        }
+      }
+    },
+    "Grant Accessibility Access" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授予辅助功能权限"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "授予輔助使用權限"
           }
         }
       }
@@ -470,6 +662,22 @@
         }
       }
     },
+    "Menu Bar Icon" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "菜单栏图标"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "選單列圖像"
+          }
+        }
+      }
+    },
     "Move window to:" : {
       "localizations" : {
         "zh-Hans" : {
@@ -498,6 +706,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "網路錯誤"
+          }
+        }
+      }
+    },
+    "New windows will be resized to a comfortable default size." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新窗口将调整为舒适的默认大小。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "新視窗將調整為舒適的預設大小。"
           }
         }
       }
@@ -566,6 +790,22 @@
         }
       }
     },
+    "Open Settings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "打开设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "開啟設定"
+          }
+        }
+      }
+    },
     "Or update via Homebrew:" : {
       "localizations" : {
         "zh-Hans" : {
@@ -614,6 +854,22 @@
         }
       }
     },
+    "Quick Setup" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "快速設定"
+          }
+        }
+      }
+    },
     "Quit" : {
       "localizations" : {
         "zh-Hans" : {
@@ -626,6 +882,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "結束"
+          }
+        }
+      }
+    },
+    "Resize to 1200 × 800" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "调整大小为 1200 × 800"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "調整大小為 1200 × 800"
           }
         }
       }
@@ -678,6 +950,54 @@
         }
       }
     },
+    "Skip" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "略過"
+          }
+        }
+      }
+    },
+    "Skip This Version" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳过此版本"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "跳過此版本"
+          }
+        }
+      }
+    },
+    "Smooth Animation" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平滑动画"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "平滑動畫"
+          }
+        }
+      }
+    },
     "Update" : {
       "localizations" : {
         "zh-Hans" : {
@@ -706,6 +1026,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "有可用更新 (%@)"
+          }
+        }
+      }
+    },
+    "Use Recommended Settings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用推荐设置"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "使用推薦設定"
           }
         }
       }
@@ -758,6 +1094,38 @@
         }
       }
     },
+    "Welcome" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歡迎"
+          }
+        }
+      }
+    },
+    "Welcome to FinderSnap" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "欢迎使用 FinderSnap"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "歡迎使用 FinderSnap"
+          }
+        }
+      }
+    },
     "What's New" : {
       "localizations" : {
         "zh-Hans" : {
@@ -774,22 +1142,6 @@
         }
       }
     },
-    "Skip This Version" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跳过此版本"
-          }
-        },
-        "zh-Hant" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "跳過此版本"
-          }
-        }
-      }
-    },
     "Width" : {
       "localizations" : {
         "zh-Hans" : {
@@ -802,6 +1154,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "寬度"
+          }
+        }
+      }
+    },
+    "Window transitions will animate smoothly over 0.25 seconds." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "窗口过渡将以 0.25 秒平滑动画呈现。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "視窗過渡將以 0.25 秒平滑動畫呈現。"
+          }
+        }
+      }
+    },
+    "Windows will appear centered on your primary display." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "窗口将在主显示器上居中显示。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "視窗將在主顯示器上置中顯示。"
           }
         }
       }
