@@ -16,18 +16,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   }
 
   func applicationDidFinishLaunching(_: Notification) {
-    AXUtils.checkIsTrusted()
-
     // Initialize update checker and check on launch if configured
     UpdateChecker.shared.checkOnLaunchIfNeeded()
 
     MenuBarItemController.shared.setUp()
 
-    initializeWindowFixerWhenAuthorized()
+    if !AppState.shared.onboardingCompleted {
+      showOnboarding()
+    } else {
+      AXUtils.checkIsTrusted()
+      initializeWindowFixerWhenAuthorized()
+    }
   }
 
   func applicationDidBecomeActive(_: Notification) {
     AXUtils.checkTrustStatus()
+  }
+}
+
+// MARK: - Onboarding
+
+private extension AppDelegate {
+  func showOnboarding() {
+    let settingsWindowController = MenuBarItemController.shared.settingsWindowController
+    OnboardingWindowController.showIfNeeded(settingsWindowController: settingsWindowController)
   }
 }
 
