@@ -12,6 +12,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
   private var permissionCancellable: AnyCancellable?
 
   func applicationWillFinishLaunching(_: Notification) {
+    migrateOnboardingStateForExistingUsers()
     populateMainMenu()
   }
 
@@ -25,8 +26,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
       showOnboarding()
     } else {
       AXUtils.checkIsTrusted()
-      initializeWindowFixerWhenAuthorized()
     }
+
+    // Always initialize window fixer — it handles both immediate setup
+    // (when already authorized) and deferred setup via permission publisher.
+    initializeWindowFixerWhenAuthorized()
   }
 
   func applicationDidBecomeActive(_: Notification) {
@@ -37,6 +41,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 // MARK: - Onboarding
 
 private extension AppDelegate {
+  /// Migration for existing users upgrading from versions before onboarding.
+  /// If `onboardingCompleted` key does not exist but other FinderSnap-specific
+  /// keys do, this is an existing install — skip onboarding.
+  func migrateOnboardingStateForExistingUsers() {
+    guard UserDefaults.standard.object(forKey: "onboardingCompleted") == nil else { return }
+
+    // Check for keys that are explicitly written by code paths (not macro defaults),
+    // making this safe regardless of whether @storage eagerly writes defaults.
+    let isExistingUser = UserDefaults.standard.object(forKey: "lastCheckTimestamp") != nil
+      || UserDefaults.standard.object(forKey: "dismissedVersion") != nil
+
+    if isExistingUser {
+      UserDefaults.standard.set(true, forKey: "onboardingCompleted")
+    }
+  }
+
   func showOnboarding() {
     let settingsWindowController = MenuBarItemController.shared.settingsWindowController
     OnboardingWindowController.showIfNeeded(settingsWindowController: settingsWindowController)
