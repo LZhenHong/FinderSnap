@@ -50,7 +50,7 @@ cask "findersnap" do
   desc "Automatically resize and position new Finder windows on macOS"
   homepage "https://github.com/LZhenHong/FinderSnap"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: :sonoma
 
   app "FinderSnap.app"
 
