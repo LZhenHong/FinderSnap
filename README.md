@@ -53,15 +53,11 @@ xcodebuild -project FinderSnap/FinderSnap.xcodeproj -scheme FinderSnap -configur
 
 The built app will be located in the `build/Release` directory.
 
-### Code Signing Note
+### Code Signing
 
-This app is open source and safe to use. Since it is not notarized by Apple, macOS Gatekeeper may block it by default. To run FinderSnap, remove the quarantine attribute:
+Release builds are signed with an Apple Developer ID certificate and notarized by Apple, so FinderSnap opens directly without Gatekeeper warnings — no quarantine removal needed.
 
-```bash
-xattr -cr /path/to/FinderSnap.app
-```
-
-Alternatively, build from source to avoid Gatekeeper restrictions.
+Alternatively, build from source to run your own copy.
 
 ## Usage
 
@@ -103,7 +99,8 @@ make release
 # Or run steps individually
 make changelog       # Generate changelog from git log
 make changelog-diff  # Generate changelog from git diff (more accurate)
-make build           # Build and package app to releases/<version>/
+make build           # Build and package app to releases/<version>/ (ad-hoc signed)
+make notarize        # Build, notarize and package with Developer ID (distribution builds)
 make tag             # Create git tag
 make clean           # Clean build artifacts
 ```

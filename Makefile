@@ -5,13 +5,14 @@
 #   DEEPSEEK_BASE_URL - Optional (default: https://api.deepseek.com)
 #   DEEPSEEK_MODEL    - Optional (default: deepseek-chat)
 
-.PHONY: help changelog changelog-diff build tag homebrew release clean
+.PHONY: help changelog changelog-diff build notarize tag homebrew release clean
 
 help:
 	@echo "Usage:"
 	@echo "  make changelog              Generate changelog from git log"
 	@echo "  make changelog-diff         Generate changelog from git diff"
-	@echo "  make build                  Build and package app"
+	@echo "  make build                  Build and package app (ad-hoc signed)"
+	@echo "  make notarize               Build, notarize and package app (Developer ID)"
 	@echo "  make tag                    Create git tag"
 	@echo "  make homebrew TAP_REPO=path Update Homebrew tap"
 	@echo "  make release                Full release (changelog + build + tag)"
@@ -25,6 +26,9 @@ changelog-diff:
 
 build:
 	@bash scripts/build.sh
+
+notarize:
+	@bash scripts/notarize.sh
 
 tag:
 	@bash scripts/tag.sh

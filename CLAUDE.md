@@ -21,7 +21,8 @@ xcodebuild -project FinderSnap/FinderSnap.xcodeproj -scheme FinderSnap -configur
 ```bash
 make changelog       # Generate changelog from git log (requires DEEPSEEK_API_KEY)
 make changelog-diff  # Generate changelog from git diff (more accurate)
-make build           # Build and package app to releases/<version>/
+make build           # Build and package app to releases/<version>/ (ad-hoc signed)
+make notarize        # Build, notarize and package with Developer ID (requires Developer ID cert + asc auth)
 make tag             # Create git tag
 make release         # Full release (changelog + build + tag)
 make clean           # Clean build artifacts
