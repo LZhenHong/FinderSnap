@@ -37,9 +37,9 @@ main() {
         -scheme "$SCHEME" \
         -configuration Release \
         -destination "generic/platform=macOS" \
-        -derivedDataPath "$BUILD_DIR/DerivedData" \
         -archivePath "$BUILD_DIR/$PRODUCT_NAME.xcarchive" \
         -skipMacroValidation \
+        -disableAutomaticPackageResolution \
         archive 2>&1 | grep -E "(error:|\*\*)" || true
 
     [[ ! -d "$BUILD_DIR/$PRODUCT_NAME.xcarchive" ]] && { print_error "Archive failed"; exit 1; }
