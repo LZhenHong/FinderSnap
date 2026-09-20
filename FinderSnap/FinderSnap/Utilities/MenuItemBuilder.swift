@@ -25,6 +25,16 @@ final class MenuItemBuilder {
   @discardableResult
   func title(_ title: String) -> Self {
     menuItem.title = title
+    // Prevent middle-truncation on macOS 15+; use tail truncation instead.
+    let style = NSMutableParagraphStyle()
+    style.lineBreakMode = .byTruncatingTail
+    menuItem.attributedTitle = NSAttributedString(
+      string: title,
+      attributes: [
+        .paragraphStyle: style,
+        .font: NSFont.menuFont(ofSize: 0),
+      ]
+    )
     return self
   }
 
